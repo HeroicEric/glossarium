@@ -15,4 +15,17 @@ feature "GlossaryManager", %{
     page.should have_link "First Glossary"
   end
 
+  scenario "Adding a term to a glossary" do
+    gm = GlossaryManager.new
+    glossary = gm.new_glossary(name: "foo")
+    visit glossary_path(glossary)
+    click_on "New Term"
+    fill_in "Name", with: "foo term"
+    fill_in "Definition", with: "a foo is a bar with baz"
+    find('input[type=submit]').click
+    current_path.should == glossary_path(glossary)
+    page.should have_content "foo term"
+    page.should have_content "a foo is a bar with baz"
+  end
+
 end
