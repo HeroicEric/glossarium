@@ -8,7 +8,11 @@ class GlossariesController < ApplicationController
 
   def create
     @glossary = @gm.new_glossary(params[:glossary])
-    @glossary.add_to_glossaries
-    redirect_to root_path, notice: "Glossary added!"
+
+    if @glossary.save
+      redirect_to root_path, notice: "Glossary added!"
+    else
+      render :new
+    end
   end
 end

@@ -13,7 +13,7 @@ describe GlossaryManager do
 
   describe "#add_glossary" do
     it "adds the glossary to the glossaries" do
-      @glossary = Object.new
+      @glossary = Factory(:glossary)
       @it.add_glossary(@glossary)
       @it.glossaries.should include(@glossary)
     end
@@ -21,23 +21,16 @@ describe GlossaryManager do
 
   describe "#new_glossary" do
     before(:each) do
-      @new_glossary = OpenStruct.new
-      @it.glossary_maker = -> { @new_glossary }
+      @new_glossary = Glossary.new
     end
 
     it "returns a new glossary" do
-      @it.new_glossary.should == @new_glossary
+      @it.new_glossary.class.should == Glossary
     end
 
-    it "sets the glossary_manager reference for glossary" do
-      @it.new_glossary.glossary_manager.should == @it
-    end
-
-    it "accepts an attribute hash on behalf of the glossary maker" do
-      glossary_maker = mock('glossary_maker')
-      glossary_maker.should_receive(:call).with({name: "foo"}).and_return(@new_glossary)
-      @it.glossary_maker = glossary_maker
-      @it.new_glossary(name: "foo")
+    it "makes a glossary using the given attributes" do
+      new_glossary = @it.new_glossary(name: "foo")
+      new_glossary.name.should == "foo"
     end
   end
 

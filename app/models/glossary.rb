@@ -1,20 +1,5 @@
-class Glossary
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
+class Glossary < ActiveRecord::Base
 
-  attr_accessor :name, :glossary_manager
+  validates :name, presence: true
 
-  def initialize(attrs={})
-    attrs.each do |key, val|
-      send("#{key}=", val)
-    end
-  end
-
-  def persisted?
-    false
-  end
-
-  def add_to_glossaries
-    glossary_manager.add_glossary(self)
-  end
 end
