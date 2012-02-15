@@ -1,18 +1,23 @@
 class GlossariesController < ApplicationController
   def index
+    @glossaries = Glossary.all
   end
 
   def new
-    @glossary = @gm.new_glossary
+    @glossary = Glossary.new
   end
 
   def create
-    @glossary = @gm.new_glossary(params[:glossary])
+    @glossary = Glossary.new(params[:glossary])
 
     if @glossary.save
       redirect_to root_path, notice: "Glossary added!"
     else
       render :new
     end
+  end
+
+  def show
+    @glossary = Glossary.find(params[:id])
   end
 end

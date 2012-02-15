@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "GlossaryManager", %{
+feature "Glossaries", %{
   As a smart guy business guy
   I want to effectively communicate technical terms to clients
   So that we can make sure that we both know what we're talking about
@@ -15,9 +15,8 @@ feature "GlossaryManager", %{
     page.should have_link "First Glossary"
   end
 
-  scenario "Adding a term to a glossary" do
-    gm = GlossaryManager.new
-    glossary = gm.new_glossary(name: "foo")
+  scenario "Creating a new term in the glossary" do
+    glossary = Factory(:glossary)
     visit glossary_path(glossary)
     click_on "New Term"
     fill_in "Name", with: "foo term"

@@ -2,7 +2,9 @@ Glossarium::Application.routes.draw do
 
   root to: 'glossaries#index'
 
-  resources :glossaries
+  resources :glossaries do
+    resources :terms
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

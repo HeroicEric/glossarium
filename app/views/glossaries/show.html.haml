@@ -1,1 +1,5 @@
-Hello
+%h1= @glossary.name
+
+= link_to "New Term", new_glossary_term_path(@glossary), class: 'btn'
+
+= render partial: "term", collection: @glossary.terms

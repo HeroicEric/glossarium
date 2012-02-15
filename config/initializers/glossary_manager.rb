@@ -1,1 +1,0 @@
-THE_GLOSSARY_MANAGER = GlossaryManager.new
