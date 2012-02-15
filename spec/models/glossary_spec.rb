@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Glossary do
   before(:each) do
-    @attr = {name: "foo"}
+    @attr = { name: "foo" }
   end
 
   it "creates an instance of itself when given valid attributes" do
