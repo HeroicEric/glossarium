@@ -27,4 +27,12 @@ feature "Glossaries", %{
     page.should have_content "a foo is a bar with baz"
   end
 
+  scenario "Viewing a term" do
+    glossary = Factory(:glossary)
+    term = glossary.new_term(Factory.attributes_for(:term))
+    visit glossary_term_path(glossary, term)
+    page.should have_content term.name
+    page.should have_content term.definition
+  end
+
 end

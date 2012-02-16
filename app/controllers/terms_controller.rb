@@ -1,4 +1,8 @@
 class TermsController < ApplicationController
+  def show
+    @term = Term.find(params[:id])
+  end
+
   def new
     @glossary = Glossary.find(params[:glossary_id])
     @term = @glossary.new_term
