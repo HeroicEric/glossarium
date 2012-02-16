@@ -1,7 +1,7 @@
 class TermsController < ApplicationController
   def new
     @glossary = Glossary.find(params[:glossary_id])
-    @term = @glossary.terms.new
+    @term = @glossary.new_term
   end
 
   def create

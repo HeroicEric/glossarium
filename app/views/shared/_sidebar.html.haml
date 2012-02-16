@@ -1,0 +1,8 @@
+.well
+  .sidebar
+    %p
+      %h3 Actions
+    %ul
+      %li= link_to "New Glossary", new_glossary_path
+      - if @glossary
+        %li= link_to "New Term", new_glossary_term_path(@glossary)

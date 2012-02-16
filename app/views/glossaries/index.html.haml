@@ -1,4 +1,7 @@
-= link_to "New Glossary", new_glossary_path
+.page-header
+  %h1 Glossaries
 
-%ul
-  = render partial: "glossary", collection: @glossaries
+%p
+  = link_to "New Glossary", new_glossary_path, class: "btn btn-primary"
+
+= render partial: "glossary", collection: @glossaries

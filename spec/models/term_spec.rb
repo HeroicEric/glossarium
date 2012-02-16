@@ -28,4 +28,5 @@ describe Term do
     @it = Term.new(@attr)
     @it.should respond_to(:glossary)
   end
+
 end

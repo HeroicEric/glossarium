@@ -1,5 +1,6 @@
-%h1= @glossary.name
+.page-header
+  %h1= @glossary.name
 
-= link_to "New Term", new_glossary_term_path(@glossary), class: 'btn'
+%p= link_to "New Term", new_glossary_term_path(@glossary), class: 'btn btn-primary'
 
 = render partial: "term", collection: @glossary.terms
