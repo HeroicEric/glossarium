@@ -35,4 +35,14 @@ feature "Glossaries", %{
     page.should have_content term.definition
   end
 
+  scenario "Editing a term" do
+    glossary = Factory(:glossary)
+    term = glossary.new_term(Factory.attributes_for(:term))
+    visit glossary_term_path(glossary, term)
+    click_on "Edit Term"
+    fill_in "Name", with: "New Name"
+    find('input[type=submit]').click
+    page.should have_css("h1", text: "New Name")
+  end
+
 end

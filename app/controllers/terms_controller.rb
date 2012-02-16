@@ -19,4 +19,19 @@ class TermsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @glossary = Glossary.find(params[:glossary_id])
+    @term = Term.find(params[:id])
+  end
+
+  def update
+    @term = Term.find(params[:id])
+
+    if @term.update_attributes(params[:term])
+      redirect_to glossary_term_path(@term), notice: "Changes were saved!"
+    else
+      render :edit
+    end
+  end
 end

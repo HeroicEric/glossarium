@@ -1,0 +1,6 @@
+= form_for [@glossary, @term] do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :definition
+  = f.text_field :definition
+  = f.submit class: "btn"

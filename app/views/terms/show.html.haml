@@ -1,3 +1,7 @@
 .page-header
   %h1= @term.name
+%p
+  = link_to "Edit Term", edit_glossary_term_path(@term), class: "btn btn-primary"
+  = link_to "Back to Glossary", glossary_path(@glossary), class: "btn"
+%h2 Definition
 %p= @term.definition
