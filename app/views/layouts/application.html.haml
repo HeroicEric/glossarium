@@ -42,11 +42,7 @@
                     %li= link_to glossary.name, glossary_path(glossary)
 
     .container-fluid
-      .span3
-        = render partial: "shared/sidebar"
-
-      .span9
-        = yield
+      = yield
 
     /
       Le javascript

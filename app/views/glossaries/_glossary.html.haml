@@ -1,3 +1,2 @@
-%a{href: glossary_path(glossary)}
-  .well
-    %h3= glossary.name
+.well
+  %h3= link_to glossary.name, glossary_path(glossary)
