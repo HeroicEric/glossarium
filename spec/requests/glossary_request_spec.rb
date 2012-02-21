@@ -33,16 +33,25 @@ feature "Glossaries", %{
     visit glossary_term_path(glossary, term)
     page.should have_content term.name
     page.should have_content term.definition
+    page.should have_content "Edit"
   end
 
   scenario "Editing a term" do
     glossary = Factory(:glossary)
     term = glossary.new_term(Factory.attributes_for(:term))
     visit glossary_term_path(glossary, term)
-    click_on "Edit Term"
+    click_on "Edit"
     fill_in "Name", with: "New Name"
     find('input[type=submit]').click
     page.should have_css("h1", text: "New Name")
+  end
+
+  scenario "Deleting a term" do
+    glossary = Factory(:glossary)
+    term = glossary.new_term(Factory.attributes_for(:term))
+    visit glossary_term_path(glossary, term)
+    expect { click_on "Delete" }.should change(Term, :count).by(-1)
+    page.should have_content "Term was successfully deleted!"
   end
 
 end

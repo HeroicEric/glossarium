@@ -42,6 +42,12 @@
                     %li= link_to glossary.name, glossary_path(glossary)
 
     .container-fluid
+
+      - if flash
+        - flash.each do |flash_key, flash_value|
+          %div{class: "alert alert-#{flash_key}"}
+            %p= flash_value
+
       = yield
 
     /

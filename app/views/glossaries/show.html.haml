@@ -3,4 +3,5 @@
 
 %p= link_to "New Term", new_glossary_term_path(@glossary), class: 'btn btn-primary'
 
-= render partial: "term", collection: @glossary.terms
+= render partial: "term", collection: @glossary.terms,
+  locals: { glossary: @glossary }

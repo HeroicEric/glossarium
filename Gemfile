@@ -29,4 +29,5 @@ group :test, :development do
   gem 'guard-spin'
   gem 'guard-rspec'
   gem 'growl'
+  gem 'pry'
 end

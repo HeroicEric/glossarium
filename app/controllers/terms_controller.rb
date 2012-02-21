@@ -34,4 +34,12 @@ class TermsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @term = Term.find(params[:id])
+    puts @term.id
+    @term.destroy
+    redirect_to glossary_path(@term.glossary), notice: "Term was successfully deleted!"
+  end
+
 end
