@@ -25,8 +25,6 @@ feature "User adds an synonym", %{
     page.should have_content "Term was successfully added to glossary!"
     visit glossary_term_path(term.glossary, term)
     page.should have_link "large"
-    synonyms = term.definition.terms.map { |t| t.name }
-    synonyms.should include("large")
   end
 
 end

@@ -11,5 +11,5 @@
 
 %h3 Synonyms:
 %ul
-  - @term.definition.terms.each do |synonym|
+  - @term.synonyms.each do |synonym|
     %li= link_to synonym.name, glossary_term_path(@glossary, synonym)
