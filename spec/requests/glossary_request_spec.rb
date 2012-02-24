@@ -15,6 +15,12 @@ feature "Glossaries", %{
     page.should have_link "First Glossary"
   end
 
+  scenario "Viewing a glossary" do
+    glossary = Factory(:glossary)
+    visit glossary_path(glossary)
+    page.should have_css("h1", text: glossary.name)
+  end
+
   scenario "Creating a new term in the glossary" do
     glossary = Factory(:glossary)
     visit glossary_path(glossary)

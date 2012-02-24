@@ -1,8 +1,15 @@
 .page-header
   %h1= @term.name
+
 %p
   = link_to "Edit Term", edit_glossary_term_path(@term), class: "btn btn-primary"
   = button_to "Delete", glossary_term_path(@term), method: :delete, class: "btn btn-danger"
   = link_to "Back to Glossary", glossary_path(@glossary), class: "btn"
+
 %h2 Definition
 %p= @term.definition.text
+
+%h3 Synonyms:
+%ul
+  - @term.definition.terms.each do |synonym|
+    %li= link_to synonym.name, glossary_term_path(@glossary, synonym)

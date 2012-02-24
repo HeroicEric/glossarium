@@ -7,5 +7,6 @@ class CreateDefinitions < ActiveRecord::Migration
     end
 
     add_column :terms, :definition_id, :integer
+    remove_column :terms, :definition
   end
 end

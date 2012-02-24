@@ -13,6 +13,11 @@ class TermsController < ApplicationController
     @glossary = Glossary.find(params[:glossary_id])
     @term = @glossary.terms.build(params[:term])
 
+    if params[:termOptions] == "synonym"
+      original_term = @glossary.terms.where(name: params[:original_term]).first
+      @term.definition = original_term.definition
+    end
+
     if @term.save
       redirect_to glossary_path(@glossary),
         notice: "Term was successfully added to glossary!"

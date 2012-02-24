@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20120221215316) do
 
   create_table "terms", :force => true do |t|
     t.string   "name"
-    t.text     "definition"
     t.integer  "glossary_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
