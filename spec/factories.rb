@@ -6,7 +6,12 @@ FactoryGirl.define do
 
   factory :term do
     sequence(:name) { |n| "term #{n}" }
-    definition "A woodchuck can chuck as much wood as it wants."
+    association :glossary
+    association :definition
+  end
+
+  factory :definition do
+    text "This is the text for fake definition!"
   end
 
 end

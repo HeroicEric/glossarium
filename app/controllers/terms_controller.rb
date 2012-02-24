@@ -6,11 +6,12 @@ class TermsController < ApplicationController
   def new
     @glossary = Glossary.find(params[:glossary_id])
     @term = @glossary.new_term
+    @definition = @term.build_definition
   end
 
   def create
     @glossary = Glossary.find(params[:glossary_id])
-    @term = @glossary.new_term(params[:term])
+    @term = @glossary.terms.build(params[:term])
 
     if @term.save
       redirect_to glossary_path(@glossary),
@@ -37,7 +38,6 @@ class TermsController < ApplicationController
 
   def destroy
     @term = Term.find(params[:id])
-    puts @term.id
     @term.destroy
     redirect_to glossary_path(@term.glossary), notice: "Term was successfully deleted!"
   end

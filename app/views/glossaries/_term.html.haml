@@ -1,3 +1,3 @@
 .well
   %h3= link_to term.name, glossary_term_path(@glossary, term)
-  %p= term.definition
+  %p= term.definition.text

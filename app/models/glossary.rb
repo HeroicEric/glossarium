@@ -7,7 +7,4 @@ class Glossary < ActiveRecord::Base
     self.terms.create(*args)
   end
 
-  def add_term(term)
-    terms << term
-  end
 end

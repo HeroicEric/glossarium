@@ -1,6 +1,17 @@
+%form
+  .control-group
+    %label What kind of Term are you making?
+    .controls
+      %label.radio
+        %input{type: "radio", name: "typeOptions"}
+          This term is a synonym for an existing term
+
 = form_for [@glossary, @term] do |f|
   = f.label :name
   = f.text_field :name
-  = f.label :definition
-  = f.text_field :definition
+
+  = f.fields_for :definition, @definition do |builder|
+    = builder.label :text, "Definition"
+    = builder.text_field :text
+
   = f.submit class: "btn"

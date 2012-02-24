@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120214174541) do
+ActiveRecord::Schema.define(:version => 20120221215316) do
+
+  create_table "definitions", :force => true do |t|
+    t.text     "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "glossaries", :force => true do |t|
     t.string   "name"
@@ -23,8 +29,9 @@ ActiveRecord::Schema.define(:version => 20120214174541) do
     t.string   "name"
     t.text     "definition"
     t.integer  "glossary_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "definition_id"
   end
 
 end
