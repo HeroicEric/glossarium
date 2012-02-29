@@ -14,8 +14,9 @@ class TermsController < ApplicationController
     @glossary = Glossary.find(params[:glossary_id])
     @term = @glossary.terms.build(params[:term])
 
-    if params[:termOptions] == "synonym"
-      original_term = @glossary.terms.where(name: params[:original_term]).first
+    original_term = @glossary.terms.where(name: params[:original_term]).first
+
+    if original_term
       @term.definition = original_term.definition
     end
 
@@ -36,7 +37,7 @@ class TermsController < ApplicationController
     @term = Term.find(params[:id])
 
     if @term.update_attributes(params[:term])
-      redirect_to glossary_term_path(@term), notice: "Changes were saved!"
+      redirect_to glossary_term_path(@term.glossary, @term), notice: "Changes were saved!"
     else
       render :edit
     end

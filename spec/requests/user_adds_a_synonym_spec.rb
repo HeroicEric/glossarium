@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-feature "User adds an synonym", %{
+feature "User adds a synonym", %{
   As a User
   I want to associate a term with another term
-  So that I can easily cross-reference synonyms
+  So that I can easily cross-reference synonymous terms
 } do
 
   # Acceptance Criteria:
@@ -25,6 +25,16 @@ feature "User adds an synonym", %{
     page.should have_content "Term was successfully added to glossary!"
     visit glossary_term_path(term.glossary, term)
     page.should have_link "large"
+  end
+
+  scenario "user tries to add a synonym for a term that doesn't exist" do
+    visit new_glossary_term_path(term.glossary)
+    choose "This term is a synonym for an existing term"
+    fill_in "Original Term", :with => "rhinocerous"
+    fill_in "Name", with: "large"
+    expect { click_button "Create Term" }.should_not change(Term, :count)
+    visit glossary_term_path(term.glossary, term)
+    page.should_not have_content "rhinocerous"
   end
 
 end
