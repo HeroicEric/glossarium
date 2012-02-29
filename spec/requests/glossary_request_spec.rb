@@ -38,7 +38,7 @@ feature "Glossaries", %{
     page.should have_content term.name
     page.should have_content term.definition.text
     page.should have_link(
-      "Edit", href: edit_glossary_term_path(term.glossary, term))
+      "Edit Term", { href: edit_glossary_term_path(term.glossary, term) })
   end
 
   scenario "Editing a term" do
