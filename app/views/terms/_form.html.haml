@@ -1,4 +1,4 @@
-= form_for [@glossary, @term] do |f|
+= simple_form_for [@glossary, @term], html: { class: 'form-horizontal' } do |f|
   .well
     %label What kind of Term are you making?
     / %label.radio
@@ -11,10 +11,9 @@
   %label{for: "original_term"} Original Term
   %input#original_term{name: "original_term", type: "text"}
 
-  = f.label :name
-  = f.text_field :name
+  = f.input :name
 
-  = f.fields_for :definition, @definition do |builder|
+  = f.simple_fields_for :definition, @definition do |builder|
     = builder.label :text, "Definition"
     = builder.text_area :text, rows: 3
 
